@@ -17,9 +17,10 @@ describe('Orange Tests', () => {
     dateField: "[placeholder='yyyy-dd-mm']",
     otherId: "(':nth-child(3) > :nth-child(1) > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input')",
     closeButton:".--close",
-    saveButton:"[type='submit']"
-    
-
+    saveButton:"[type='submit']",
+    selectArrowButton: ".oxd-select-text--arrow",
+    thirItenSelectArrow: ':nth-child(3) > span',
+    fifthItenSelectArrow: ':nth-child(5) > span'
 
   }
 
@@ -39,9 +40,14 @@ describe('Orange Tests', () => {
     cy.get(selectorsList.closeButton).click()
     cy.get(selectorsList.dateField).eq(1).clear().type('2025-03-06')
     cy.get(selectorsList.closeButton).click()
+    cy.get(selectorsList.selectArrowButton).eq(0).click()
+    cy.get(selectorsList.fifthItenSelectArrow).click()
+    cy.get(selectorsList.selectArrowButton).eq(1).click()
+    cy.get(selectorsList.thirItenSelectArrow).click()
     cy.get(selectorsList.saveButton).eq(0).click()
     cy.get('body').should('contain', 'Successfully Updated')
     cy.get('.oxd-toast-close')
+ 
     
     
     })
